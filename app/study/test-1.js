@@ -16,6 +16,8 @@ export default function App() {
   const handlePress = () => {
     console.log("text clicked");
   };
+  const [first, setfirst] = useState(false);
+  const [category, setCategory] = useState();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,11 +50,11 @@ export default function App() {
             { text: "Cancel" },
           ])
         }
-      // onPress={() =>
-      //   Alert.prompt("hi there", "Ask me anything", (text) =>
-      //     console.log(text)
-      //   )
-      // }
+        // onPress={() =>
+        //   Alert.prompt("hi there", "Ask me anything", (text) =>
+        //     console.log(text)
+        //   )
+        // }
       />
     </SafeAreaView>
   );
@@ -130,11 +132,16 @@ const styles = StyleSheet.create({
   },
 });
 
-
-<View style={{
-  backgroundColor: "skyblue", flex: 1, flexDirection: "row", justifyContent: "center", alignContent: 'center',
-  flexWrap: "wrap"
-}}>
+<View
+  style={{
+    backgroundColor: "skyblue",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignContent: "center",
+    flexWrap: "wrap",
+  }}
+>
   <View
     style={{
       backgroundColor: "#fff",
@@ -142,7 +149,7 @@ const styles = StyleSheet.create({
       height: 100,
       // flexBasis: 200,
       // flexGrow: 1
-      flexShrink: 1
+      flexShrink: 1,
     }}
   />
   <View
@@ -150,44 +157,60 @@ const styles = StyleSheet.create({
       backgroundColor: "gold",
       width: 100,
       height: 100,
-      top: 30
-
+      top: 30,
     }}
   />
   <View
     style={{
       backgroundColor: "tomato",
       width: 100,
-      height: 100
+      height: 100,
     }}
   />
 
-  <View style={{
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }}>
-
-    <View style={{
-      backgroundColor: "dodgerblue",
-      width: 100, height: 100,
-      borderWidth: 10,
-      borderColor: "royalblue",
-      borderRadius: 15,
-      borderTopWidth: 20,
-      borderTopLeftRadius: 40,
-      shadowColor: "#ccc",
-      shadowOffset: {
-        height: 10,
-        width: 10,
-      },
-      shadowOpacity: 1,
-      shadowRadius: 10,
-      elevation: 30
-
-    }}>
-
-    </View>
+  <View
+    style={{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    <View
+      style={{
+        backgroundColor: "dodgerblue",
+        width: 100,
+        height: 100,
+        borderWidth: 10,
+        borderColor: "royalblue",
+        borderRadius: 15,
+        borderTopWidth: 20,
+        borderTopLeftRadius: 40,
+        shadowColor: "#ccc",
+        shadowOffset: {
+          height: 10,
+          width: 10,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 10,
+        elevation: 30,
+      }}
+    ></View>
   </View>
-</View>
 
+  <Switch value={first} onValueChange={(item) => setfirst(item)} />
+  <AppPicker
+    selectedItem={category}
+    onSelectItem={(item) => setCategory(item)}
+    items={categories}
+    icon="apps"
+    placeholder="hiasdnfa"
+  />
+  <AppTextInput placeholder={"User Name"} icon={"email"} />
+</View>;
+
+const categories = [
+  { label: "bags", value: 1 },
+  { label: "mac", value: 2 },
+  { label: "iphone", value: 3 },
+  { label: "sheos", value: 4 },
+];
